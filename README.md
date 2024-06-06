@@ -64,6 +64,7 @@ This implementation requires the following dependencies (tested on Window 10):
 * Run project:
 
   ```bash
+  cd ./Interface
   python manage.py runserver 0.0.0.0:8000
   ```
 		
