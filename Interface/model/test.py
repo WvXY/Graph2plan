@@ -59,7 +59,7 @@ def load_model():
     return model
 
 def get_userinfo(userRoomID,adptRoomID):
-    start = time.clock()
+    start = time.time()
     global model
     test_index = vw.testNameList.index(userRoomID.split(".")[0])
     test_data = vw.test_data[test_index]
@@ -191,10 +191,10 @@ def get_userinfo_adjust(userRoomID,adptRoomID,NewGraph):
     rEdge = fp_end.get_triples(tensor=False)[:, [0, 2, 1]]
     Edge = [[float(u), float(v), float(type2)] for u, v, type2 in rEdge]
 
-    s=time.clock()
+    s=time.time()
     boxes_pred, gene_layout, boxes_refeine = test(vw.model, fp_end)
 
-    e=time.clock()
+    e=time.time()
     print(' model test time: %s Seconds' % (e - s))
 
     boxes_pred = boxes_pred * 255
@@ -215,9 +215,9 @@ def get_userinfo_adjust(userRoomID,adptRoomID,NewGraph):
     fp_end.data.refineBox=np.array(Box)
     fp_end.data.rEdge=np.array(Edge)
     gene_mat=matlab.double(np.array(fp_end.data.gene).tolist())
-    startcom= time.clock()
+    startcom= time.time()
     box_refine =  vw.engview.align_fp(boundary_mat, Box_mat,  rNode_mat,Edge_mat,matlab.double(fp_end.data.gene.astype(float).copy().tolist()) ,18,False, nargout=3)
-    endcom = time.clock()
+    endcom = time.time()
     print(' matlab.compute time: %s Seconds' % (endcom - startcom))
     box_out=box_refine[0]
     box_order=box_refine[1]
