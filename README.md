@@ -40,7 +40,7 @@ This implementation requires the following dependencies (tested on Window 10):
   
   # change the url acchording to your CUDA version, refer to: https://pytorch.org/
   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117 -U
-  pip install django opencv-python scipy pandas shapely -U
+  pip install django opencv-python scipy pandas matplotlib shapely -U
   ``` 
   **Note: there is a fatal error when using Matlab and pytorch<1.5.0 together on Linux. Please install the latest pytorch 1.5.0+ to use the interface and run post processing.**
 		
